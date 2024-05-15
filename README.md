@@ -19,4 +19,4 @@ $$ \mathbf{x_k} = f (\mathbf{x_{k-1}}, \mathbf{u_{k-1}}) + \mathbf{w_k} $$
 
 $$ \mathbf{z_k} = h (\mathbf{x_k}) + \mathbf{v_k} $$
 
-where $\mathbf{w_k}$ and $\mathbf{v_k}$ are the process and observation noises, $\mathbfx_k$ is the state, $\mathbf{u_{k-1}}$ is the control input vector of the previous state. $\mathbf{z_k}$ is the measurement vector at time step k, f is a nonlinear function describing state transition, and h is a nonlinear function relating the state to the measurements. 
+where $\mathbf{w_k}$ and $\mathbf{v_k}$ are the process and observation noises, $\mathbf{x_k}$ is the state, $\mathbf{u_{k-1}}$ is the control input vector of the previous state. $\mathbf{z_k}$ is the measurement vector at time step k, f is a nonlinear function describing state transition, and h is a nonlinear function relating the state to the measurements. 
