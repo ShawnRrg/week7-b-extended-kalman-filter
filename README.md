@@ -15,4 +15,4 @@ The papers related to mathematical foundations of Kalman filter were firstly est
 ## Preliminaries
 In EKF, the state transition and observation models do not need to be linear, but just differentiable. 
 
-$$ **x_k**=f(**x_{k-1}**, **u_{k-1}**) + **w_k}**$$
+$$ **x_k**=f(**x_{k-1}**, **u_{k-1}**) + **w_k**$$
