@@ -14,4 +14,5 @@ The papers related to mathematical foundations of Kalman filter were firstly est
 
 ## Preliminaries
 In EKF, the state transition and observation models do not need to be linear, but just differentiable. 
-$$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
+
+$$\left( \sum_{k=1}^n a_k-1 b_k-1 \right)^2 = left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
