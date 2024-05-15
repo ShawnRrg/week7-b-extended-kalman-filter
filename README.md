@@ -12,3 +12,5 @@ In real world systems, such as autonomous vehicles and aircrafts, exhibit nonlin
 
 The papers related to mathematical foundations of Kalman filter were firstly established between 1959 and 1961. Kalman filter is an optimal way to deal with linear system with noise. However, most of the engineering problems are nonlinear. So attempts are made to solve those nonlinear problems. The EKF used calculus multivariating Taylor Series to linearize a model of a working point. If a system is not well known, praticle filters(PF) are used for estimation. 
 
+## Preliminaries
+In EKF, the state transition and observation models do not need to be linear, but just differentiable. 
