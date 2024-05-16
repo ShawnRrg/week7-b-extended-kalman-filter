@@ -32,6 +32,10 @@ The first step is prediction. The predicted step estimate is
 
 $$ \mathbf{x_k\mid_{k-1}} = f (\mathbf{x_{k-1 \mid{k-1}}}, \mathbf{u_{k-1}}) $$
 
+The predicted covariance estimate is 
+
+$$ \mathbf{P_k\mid_{k-1}} = \mathbf{{F_{k-1}}P_{k-1 \mid{k-1}}{F_{k-1}}^T}+\mathbf{Q_{k-1}} $$
+
 $$ \mathbf{P}^T = \tilde{\mathbf{R}} \mid Q$$
 
 $$ \mathbf{delP/delx} $$
