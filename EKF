@@ -1,0 +1,99 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+def f(x, u):
+    # Define the state transition function
+    # Example: simple motion model
+    return np.array([x[0] + u[0] * np.cos(x[2]),
+                     x[1] + u[0] * np.sin(x[2]),
+                     x[2] + u[1]])
+
+def h(x):
+    # Define the measurement function
+    # Example: directly observing the state
+    return x
+
+def jacobian_f(x, u):
+    # Define the Jacobian of the state transition function
+    return np.array([[1, 0, -u[0] * np.sin(x[2])],
+                     [0, 1, u[0] * np.cos(x[2])],
+                     [0, 0, 1]])
+
+def jacobian_h(x):
+    # Define the Jacobian of the measurement function
+    return np.eye(len(x))
+
+# Initialize variables
+x = np.array([0, 0, 0])  # Initial state
+P = np.eye(3)            # Initial state covariance
+Q = np.eye(3) * 0.1      # Process noise covariance
+R = np.eye(3) * 0.1      # Measurement noise covariance
+u = np.array([1, 0.1])   # Control input (velocity, turn rate)
+z = np.array([1, 1, 0.1]) # Measurement
+
+# Prediction step
+x_pred = f(x, u)
+F = jacobian_f(x, u)
+P_pred = F @ P @ F.T + Q
+
+# Update step
+y = z - h(x_pred)
+H = jacobian_h(x_pred)
+S = H @ P_pred @ H.T + R
+K = P_pred @ H.T @ np.linalg.inv(S)
+x = x_pred + K @ y
+P = (np.eye(len(x)) - K @ H) @ P_pred
+
+print("Updated state estimate:", x)
+print("Updated error covariance:", P)
+
+
+
+# Simulation parameters
+dt = 0.1
+time_steps = 100
+
+# Generate true trajectory and noisy measurements
+true_states = []
+measurements = []
+state = np.array([0, 0, 0])
+for t in range(time_steps):
+    state = f(state, u)
+    true_states.append(state)
+    measurement = state + np.random.multivariate_normal([0, 0, 0], R)
+    measurements.append(measurement)
+
+true_states = np.array(true_states)
+measurements = np.array(measurements)
+
+# Apply EKF
+estimates = []
+x = np.array([0, 0, 0])
+P = np.eye(3)
+for z in measurements:
+    # Prediction
+    x_pred = f(x, u)
+    F = jacobian_f(x, u)
+    P_pred = F @ P @ F.T + Q
+
+    # Update
+    y = z - h(x_pred)
+    H = jacobian_h(x_pred)
+    S = H @ P_pred @ H.T + R
+    K = P_pred @ H.T @ np.linalg.inv(S)
+    x = x_pred + K @ y
+    P = (np.eye(len(x)) - K @ H) @ P_pred
+
+    estimates.append(x)
+
+estimates = np.array(estimates)
+
+# Plot results
+plt.figure(figsize=(10, 8))
+plt.plot(true_states[:, 0], true_states[:, 1], label='True Path')
+plt.scatter(measurements[:, 0], measurements[:, 1], label='Noisy Measurements', c='r', s=10)
+plt.plot(estimates[:, 0], estimates[:, 1], label='EKF Estimates', linestyle='--')
+plt.legend()
+plt.xlabel('X position')
+plt.ylabel('Y position')
+plt.show()
