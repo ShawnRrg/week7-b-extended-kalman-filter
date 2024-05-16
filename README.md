@@ -59,11 +59,22 @@ Updated covariance estimate is
 
 $$ \mathbf{P_k\mid_k} = \mathbf{({I} - {K_k}{H_k}){P_{k\mid{k-1}}}} $$
 
+Relavant code:
+
+
+
 ## Conclusion
+
+The key takeaways from this note are
+1. EKF operates on nonlinear models
+2. Using Jacobian to linearize these models
+3. Prediction and updates
+
 
 ## Reference
 
-[^1]: https://en.wikipedia.org/wiki/Extended_Kalman_filter
+[1] https://en.wikipedia.org/wiki/Extended_Kalman_filter
+
 
 
 
