@@ -36,6 +36,22 @@ The predicted covariance estimate is
 
 $$ \mathbf{P_k\mid_{k-1}} = \mathbf{{F_{k-1}}P_{k-1 \mid{k-1}}{F_{k-1}}^T}+\mathbf{Q_{k-1}} $$
 
+In update step, the measurement(innovation) residual is 
+
+$$ \tilde{\mathbf{y_k}} = \mathbf{z_k}-h(\hat{\mathbf{x_k\mid_{k-1}}})$$
+
+The innovation covariance is 
+
+$$ \mathbf{S_k} = \mathbf{{H_k}P_{k\mid{k-1}}{H_{k}}^T}+\mathbf{R_{k}} $$
+
+The Kalman Gain is 
+
+$$ \mathbf{K_k} = \mathbf{P_{k\mid{k-1}}{H_{k}}^T{S_{k}}^{-1}} $$
+
+Updated state estimate is 
+
+$$ \hat{\mathbf{x_k\mid_k}} = \hat{\mathbf{x_k\mid_{k-1}}} + \mathbf{K_k}\tilde{\mathbf{y_k}}$$
+
 $$ \mathbf{P}^T = \tilde{\mathbf{R}} \mid Q$$
 
 $$ \mathbf{delP/delx} $$
