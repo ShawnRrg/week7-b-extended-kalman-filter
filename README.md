@@ -13,6 +13,7 @@ In real world systems, such as autonomous vehicles and aircrafts, exhibit nonlin
 The papers related to mathematical foundations of Kalman filter were firstly established between 1959 and 1961. Kalman filter is an optimal way to deal with linear system with noise. However, most of the engineering problems are nonlinear. So attempts are made to solve those nonlinear problems. The EKF used calculus multivariating Taylor Series to linearize a model of a working point. If a system is not well known, praticle filters(PF) are used for estimation. 
 
 ## Preliminaries
+### Definition
 In EKF, the state transition and observation models do not need to be linear, but just differentiable. 
 
 $$ \mathbf{x_k} = f (\mathbf{x_{k-1}}, \mathbf{u_{k-1}}) + \mathbf{w_k} $$
@@ -26,6 +27,8 @@ We need Jacobian to linearize function f and h
 $$ \mathbf{F_{k-1}} = \frac{\partial f}{\partial x} \mid_{x_{k-1}, u_{k-1}} $$
 
 $$ \mathbf{H_{k}} = \frac{\partial h}{\partial x} \mid_{x_k\mid_{k-1}} $$
+
+## Main Body
 
 The EKF operates in two steps: prediction and update.
 The first step is prediction. The predicted step estimate is
@@ -56,15 +59,11 @@ Updated covariance estimate is
 
 $$ \mathbf{P_k\mid_k} = \mathbf{({I} - {K_k}{H_k}){P_{k\mid{k-1}}}} $$
 
+## Conclusion
 
-$$ \mathbf{P}^T = \tilde{\mathbf{R}} \mid Q$$
+## Reference
 
-$$ \mathbf{delP/delx} $$
+[^1]: https://en.wikipedia.org/wiki/Extended_Kalman_filter
 
-$$ \frac{\partial P}{\partial X} $$
 
-<p align="center">
-  <img width="400" height="400" >
-</p>
 
-[Barrier functions] ,
