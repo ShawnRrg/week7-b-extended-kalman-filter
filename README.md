@@ -52,6 +52,11 @@ Updated state estimate is
 
 $$ \hat{\mathbf{x_k\mid_k}} = \hat{\mathbf{x_k\mid_{k-1}}} + \mathbf{K_k}\tilde{\mathbf{y_k}}$$
 
+Updated covariance estimate is 
+
+$$ \mathbf{P_k\mid_k} = \mathbf{({I} - {K_k}{H_k}){P_{k\mid{k-1}}}} $$
+
+
 $$ \mathbf{P}^T = \tilde{\mathbf{R}} \mid Q$$
 
 $$ \mathbf{delP/delx} $$
