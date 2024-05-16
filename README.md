@@ -59,9 +59,9 @@ Updated covariance estimate is
 
 $$ \mathbf{P_k\mid_k} = \mathbf{({I} - {K_k}{H_k}){P_{k\mid{k-1}}}} $$
 
-Relavant code:
+### Applications
 
-
+EKF is widely used in various fields such as robotics, aerospace, automotive, and finance, where systems are mostly nonlinear.
 
 ## Conclusion
 
@@ -69,7 +69,13 @@ The key takeaways from this note are
 1. EKF operates on nonlinear models
 2. Using Jacobian to linearize these models
 3. Prediction and updates
+4. Code implementation
+5. Applications
 
+What was not covered in the notes are:
+
+1. Particle filters (PF)
+2. Figure, diagrams, or video/gif about the topic
 
 ## Reference
 
