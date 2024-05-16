@@ -21,6 +21,17 @@ $$ \mathbf{z_k} = h (\mathbf{x_k}) + \mathbf{v_k} $$
 
 where $\mathbf{w_k}$ and $\mathbf{v_k}$ are the process and observation noises, $\mathbf{x_k}$ is the state, $\mathbf{u_{k-1}}$ is the control input vector of the previous state. $\mathbf{z_k}$ is the measurement vector at time step k, f is a nonlinear function describing state transition, and h is a nonlinear function relating the state to the measurements. 
 
+We need Jacobian to linearize function f and h
+
+$$ \mathbf{F_{k-1}} = \frac{\partial f}{\partial x} \mid_{x_{k-1}, u_{k-1}} $$
+
+$$ \mathbf{H_{k}} = \frac{\partial h}{\partial x} \mid_{x_k\mid_{k-1}} $$
+
+The EKF operates in two steps: prediction and update.
+The first step is prediction. The predicted step estimate is
+
+$$ \mathbf{x_k\mid_{k-1}} = f (\mathbf{x_{k-1 \mid{k-1}}}, \mathbf{u_{k-1}}) $$
+
 $$ \mathbf{P}^T = \tilde{\mathbf{R}} \mid Q$$
 
 $$ \mathbf{delP/delx} $$
